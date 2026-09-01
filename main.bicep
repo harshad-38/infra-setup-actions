@@ -39,7 +39,7 @@ var name = toLower('${prefix}')
 var uniqueSuffix = substring(uniqueString(resourceGroup().id), 2, 6)
 
 // Dependent resources for the Azure Machine Learning workspace
-module keyvault 'modules/keyvault.bicep' = {
+module keyvault 'modules/keyVault.bicep' = {
   name: 'kvd-${name}-${uniqueSuffix}-deployment'
   params: {
     location: location
@@ -58,7 +58,7 @@ module storage 'modules/storage.bicep' = {
   }
 }
 
-module containerRegistry 'modules/containerregistry.bicep' = {
+module containerRegistry 'modules/containerRegistry.bicep' = {
   name: 'cr${name}${uniqueSuffix}-deployment'
   params: {
     location: location
