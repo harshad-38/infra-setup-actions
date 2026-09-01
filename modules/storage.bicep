@@ -87,14 +87,14 @@ resource storageAccountBlobService 'Microsoft.Storage/storageAccounts/blobServic
       retentionInDays: 1
     }
     containerDeleteRetentionPolicy:{
-      allowPermanentDelete: true
+      allowPermanentDelete: false
       enabled: true
       days: 1
     }
     cors: {}
     deleteRetentionPolicy: {
       enabled: true
-      allowPermanentDelete: true
+      allowPermanentDelete: false
       days: 2
     }
     isVersioningEnabled: true

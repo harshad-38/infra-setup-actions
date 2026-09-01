@@ -24,7 +24,7 @@ resource mlRegistry 'Microsoft.MachineLearningServices/registries@2023-04-01' = 
           {
             systemCreatedAcrAccount: {
               acrAccountName: acrName
-              acrAccountSku: 'Basic'
+              acrAccountSku: 'Premium'
               armResourceId: {
                 resourceId: resourceId('Microsoft.ContainerRegistry/registries', acrName)
               } 
