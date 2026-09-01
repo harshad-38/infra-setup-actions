@@ -5,16 +5,16 @@ on:
     branches: [ main ]
     paths:
       - .github/workflows/deploy-infra.yml
-      - './config.bicepparam'
+      - 'config.bicepparam'
       - 'main.bicep'
-      - modules/**
+      - 'modules/**'
   push:
     branches: [ main ]
     paths:
       - .github/workflows/deploy-infra.yml
-      - './config.bicepparam'
+      - 'config.bicepparam'
       - 'main.bicep'
-      - modules/**
+      - 'modules/**'
 
 permissions:
   id-token: write
