@@ -86,7 +86,7 @@ module machineLearningCompute 'machinelearningCompute.bicep' = {
 }
 
 resource dataStore 'Microsoft.MachineLearningServices/workspaces/dataStores@2024-04-01' = {
-  name: '${machineLearningName}_ds'
+  name: 'ml_datastore'
   parent: machineLearning
   properties: {
     accountName: storageAccountName
@@ -102,7 +102,7 @@ resource dataStore 'Microsoft.MachineLearningServices/workspaces/dataStores@2024
 }
 
 module roleAssignments 'roleAssignments.bicep' = {
-  name: 'roleAssignmentsWorkspace'
+  name: '${machineLearningName}RoleML'
   scope: resourceGroup()
   params: {
     principalID: machineLearning.identity.principalId

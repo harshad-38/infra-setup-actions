@@ -72,7 +72,7 @@ resource machineLearningComputeInstance001 'Microsoft.MachineLearningServices/wo
 }
 
 module roleAssignmentsComputeCluster 'roleAssignments.bicep' = {
-  name: 'roleAssignmentsComputeCluster'
+  name: '${machineLearning}RoleCluster'
   scope: resourceGroup()
   params: {
     principalID: machineLearningCluster001.identity.principalId
@@ -81,7 +81,7 @@ module roleAssignmentsComputeCluster 'roleAssignments.bicep' = {
 }
 
 module roleAssignmentsComputeInstance 'roleAssignments.bicep' = {
-  name: 'roleAssignmentsComputeInstance'
+  name: '${machineLearning}Instance'
   scope: resourceGroup()
   params: {
     principalID: machineLearningComputeInstance001.identity.principalId
