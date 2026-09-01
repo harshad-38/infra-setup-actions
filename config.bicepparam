@@ -1,7 +1,7 @@
 using './main.bicep'
 
 param amlComputeDefaultVmSize = 'Standard_D2s_v3'
-param amlComputePublicIp = false
+param amlComputePublicIp = true
 param prefix = 'mlops'
 
 param tags = {

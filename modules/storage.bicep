@@ -63,9 +63,7 @@ resource storage 'Microsoft.Storage/storageAccounts@2021-09-01' = {
     isHnsEnabled: false
     isNfsV3Enabled: false
     networkAcls: {
-
-      bypass: 'AzureServices'
-      defaultAction: 'Deny'
+      defaultAction: 'Allow'
     }
     keyPolicy: {
       keyExpirationPeriodInDays: 7

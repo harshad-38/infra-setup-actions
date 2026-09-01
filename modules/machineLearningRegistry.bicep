@@ -25,9 +25,6 @@ resource mlRegistry 'Microsoft.MachineLearningServices/registries@2023-04-01' = 
             systemCreatedAcrAccount: {
               acrAccountName: acrName
               acrAccountSku: 'Premium'
-              armResourceId: {
-                resourceId: resourceId('Microsoft.ContainerRegistry/registries', acrName)
-              } 
               
             }
           }
@@ -41,9 +38,6 @@ resource mlRegistry 'Microsoft.MachineLearningServices/registries@2023-04-01' = 
               storageAccountHnsEnabled: true
               allowBlobPublicAccess: true
               storageAccountType: storageAccountType
-              armResourceId: {
-                resourceId: resourceId('Microsoft.Storage/storageAccounts', storageName)
-              }
             }
           }
         ]
