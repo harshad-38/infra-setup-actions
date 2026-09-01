@@ -19,7 +19,7 @@ resource containerRegistry 'Microsoft.ContainerRegistry/registries@2021-09-01' =
   }
   properties: {
     adminUserEnabled: true
-    dataEndpointEnabled: true
+    dataEndpointEnabled: false
     encryption: {
       // keyVaultProperties: {
       //   identity: 'string'
