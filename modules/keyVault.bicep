@@ -27,7 +27,7 @@ resource keyVault 'Microsoft.KeyVault/vaults@2021-10-01' = {
       family: 'A'
       name: 'standard'
     }
-    softDeleteRetentionInDays: 1
+    softDeleteRetentionInDays: 8
     tenantId: subscription().tenantId
     publicNetworkAccess: 'Enabled'
   }
