@@ -33,7 +33,7 @@ resource containerRegistry 'Microsoft.ContainerRegistry/registries@2021-09-01' =
     // }
     policies: {
       exportPolicy:{
-        status: 'disabled'
+        status: 'enabled'
       }
       quarantinePolicy: {
         status: 'disabled'
