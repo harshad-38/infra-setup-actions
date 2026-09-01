@@ -21,15 +21,13 @@ resource keyVault 'Microsoft.KeyVault/vaults@2021-10-01' = {
     enableRbacAuthorization: true
     enablePurgeProtection: true
     networkAcls: {
-
-      bypass: 'AzureServices'
-      defaultAction: 'Deny'
+      defaultAction: 'Allow'
     }
     sku: {
       family: 'A'
       name: 'standard'
     }
-    softDeleteRetentionInDays: 10
+    softDeleteRetentionInDays: 1
     tenantId: subscription().tenantId
     publicNetworkAccess: 'Enabled'
   }
