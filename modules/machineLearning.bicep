@@ -21,6 +21,9 @@ param tags object
 @description('Machine learning workspace name')
 param machineLearningName string
 
+@description('Machine learning workspace number')
+param num int
+
 @description('Machine learning workspace display name')
 param machineLearningFriendlyName string = machineLearningName
 
@@ -70,7 +73,7 @@ resource machineLearning 'Microsoft.MachineLearningServices/workspaces@2022-05-0
 }
 
 module machineLearningCompute 'machinelearningCompute.bicep' = {
-  name: 'machineLearningComputes'
+  name: '${machineLearningName}Compute'
   scope: resourceGroup()
   params: {
     machineLearning: machineLearningName
@@ -86,7 +89,7 @@ module machineLearningCompute 'machinelearningCompute.bicep' = {
 }
 
 resource dataStore 'Microsoft.MachineLearningServices/workspaces/dataStores@2024-04-01' = {
-  name: 'ml_datastore'
+  name: 'ml_datastore${num}'
   parent: machineLearning
   properties: {
     accountName: storageAccountName

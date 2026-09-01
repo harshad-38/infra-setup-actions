@@ -43,7 +43,7 @@ module keyvault 'modules/keyVault.bicep' = {
   name: 'kvd-${name}-${uniqueSuffix}-deployment'
   params: {
     location: location
-    keyvaultName: 'kvd-${name}-${uniqueSuffix}-01'
+    keyvaultName: 'kvd-${name}-${uniqueSuffix}-02'
     tags: tags
   }
 }
@@ -87,7 +87,7 @@ module azuremlWorkspace 'modules/machineLearning.bicep' = {
     location: location
     prefix: name
     tags: tags
-
+    num: 1
     // dependent resources
     applicationInsightsId: applicationInsights.outputs.applicationInsightsId
     containerRegistryId: containerRegistry.outputs.containerRegistryId
@@ -113,6 +113,7 @@ module azuremlWorkspaceTwo 'modules/machineLearning.bicep' = {
     location: location
     prefix: name
     tags: tags
+    num: 2
 
     // dependent resources
     applicationInsightsId: applicationInsights.outputs.applicationInsightsId
