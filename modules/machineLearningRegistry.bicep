@@ -50,7 +50,7 @@ resource mlRegistry 'Microsoft.MachineLearningServices/registries@2023-04-01' = 
 
 module roleAssignments 'roleAssignments.bicep' = {
   name: 'roleAssignmentsMLRegistry'
-  scope: resourceGroup()
+  scope: resourceGroup('demoGroup')
   params: {
     principalID: mlRegistry.identity.principalId
     roleDefinitionID: ['b78c5d69-af96-48a3-bf8d-a8b4d589de94']
