@@ -76,19 +76,19 @@ resource machineLearningComputeInstance001 'Microsoft.MachineLearningServices/wo
 
 module roleAssignmentsComputeCluster 'roleAssignments.bicep' = {
   name: '${machineLearning}RoleCluster'
-  scope: resourceGroup()
+  scope: resourceGroup('demoGroup')
   params: {
     principalID: machineLearningCluster001.identity.principalId
-    roleDefinitionID: ['acdd72a7-3385-48ef-bd42-f606fba81ae7', 'ba92f5b4-2d11-453d-a403-e96b0029c9fe','7f951dda-4ed3-4680-a7ca-43fe172d538d','4633458b-17de-408a-b874-0445c86b69e6']
+    roleDefinitionID: ['ba92f5b4-2d11-453d-a403-e96b0029c9fe','8311e382-0749-4cb8-b61a-304f252e45ec','4633458b-17de-408a-b874-0445c86b69e6']
   }
 }
 
 module roleAssignmentsComputeInstance 'roleAssignments.bicep' = {
   name: '${machineLearning}Instance'
-  scope: resourceGroup()
+  scope: resourceGroup('demoGroup')
   params: {
     principalID: machineLearningComputeInstance001.identity.principalId
-    roleDefinitionID: ['acdd72a7-3385-48ef-bd42-f606fba81ae7', 'ba92f5b4-2d11-453d-a403-e96b0029c9fe','7f951dda-4ed3-4680-a7ca-43fe172d538d','4633458b-17de-408a-b874-0445c86b69e6']
+    roleDefinitionID: ['ba92f5b4-2d11-453d-a403-e96b0029c9fe','8311e382-0749-4cb8-b61a-304f252e45ec','4633458b-17de-408a-b874-0445c86b69e6']
   }
 }
 
