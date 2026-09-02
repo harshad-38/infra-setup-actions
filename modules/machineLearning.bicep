@@ -79,6 +79,7 @@ module machineLearningCompute 'machinelearningCompute.bicep' = {
     machineLearning: machineLearningName
     location: location
     prefix: prefix
+    num: num
     tags: tags
     amlComputePublicIp: amlComputePublicIp
     vmSizeParam: vmSizeParam

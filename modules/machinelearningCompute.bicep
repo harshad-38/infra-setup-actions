@@ -9,6 +9,9 @@ param machineLearning string
 @description('Azure region of the deployment')
 param location string
 
+@description('To provide unique names to compute resources in different workspaces')
+param num int
+
 @description('Tags to add to the resources')
 param tags object
 
@@ -19,7 +22,7 @@ param amlComputePublicIp bool
 param vmSizeParam string
 
 resource machineLearningCluster001 'Microsoft.MachineLearningServices/workspaces/computes@2022-05-01' = {
-  name: '${machineLearning}/cluster001'
+  name: '${machineLearning}/cluster${num}'
   location: location
   tags: tags
   identity: {
@@ -47,7 +50,7 @@ resource machineLearningCluster001 'Microsoft.MachineLearningServices/workspaces
 }
 
 resource machineLearningComputeInstance001 'Microsoft.MachineLearningServices/workspaces/computes@2022-05-01' = {
-  name: '${machineLearning}/${prefix}-ci001'
+  name: '${machineLearning}/${prefix}-ci00${num}'
   location: location
   tags: tags
   identity: {

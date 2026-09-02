@@ -43,7 +43,7 @@ module keyvault 'modules/keyVault.bicep' = {
   name: 'kvd-${name}-${uniqueSuffix}-deployment'
   params: {
     location: location
-    keyvaultName: 'kvd-${name}-${uniqueSuffix}-02'
+    keyvaultName: 'kvd-${name}-${uniqueSuffix}-03'
     tags: tags
   }
 }
@@ -79,6 +79,7 @@ module applicationInsights 'modules/applicationInsights.bicep' = {
 
 module azuremlWorkspace 'modules/machineLearning.bicep' = {
   name: 'mlw-${name}-${uniqueSuffix}-deployment'
+  scope: resourceGroup('demoGroup')
   params: {
     // workspace organization
     machineLearningName: 'mlw-${name}-${uniqueSuffix}'
@@ -105,6 +106,7 @@ module azuremlWorkspace 'modules/machineLearning.bicep' = {
 
 module azuremlWorkspaceTwo 'modules/machineLearning.bicep' = {
   name: 'mlw-${name}-${uniqueSuffix}-second-deployment'
+  scope: resourceGroup('demo')
   params: {
     // workspace organization
     machineLearningName: 'mlw-${name}-${uniqueSuffix}-two'
