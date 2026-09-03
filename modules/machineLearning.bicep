@@ -112,4 +112,3 @@ resource dataStore 'Microsoft.MachineLearningServices/workspaces/dataStores@2024
   }
 }
 
-output machineLearningId string = machineLearning.identity.principalId
