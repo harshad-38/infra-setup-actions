@@ -63,6 +63,9 @@ module createUserAssignedIdentity 'modules/createUserAssignedIdentity.bicep' = {
     location: location
     resourceName: 'uai_${name}_${uniqueSuffix}'
   }
+  dependsOn: [
+    createDemoGroupResourceGroup
+  ]
 }
 // Dependent resources for the Azure Machine Learning workspace
 module keyvault 'modules/keyVault.bicep' = {
@@ -73,6 +76,9 @@ module keyvault 'modules/keyVault.bicep' = {
     keyvaultName: 'kvd-${name}-${uniqueSuffix}-13'
     tags: tags
   }
+  dependsOn: [
+    createDemoGroupResourceGroup
+  ]
 }
 
 module storage 'modules/storage.bicep' = {
@@ -84,6 +90,9 @@ module storage 'modules/storage.bicep' = {
     storageSkuName: 'Standard_LRS'
     tags: tags
   }
+  dependsOn: [
+    createDemoGroupResourceGroup
+  ]
 }
 
 module containerRegistry 'modules/containerRegistry.bicep' = {
@@ -94,6 +103,9 @@ module containerRegistry 'modules/containerRegistry.bicep' = {
     containerRegistryName: 'cr${name}${uniqueSuffix}'
     tags: tags
   }
+  dependsOn: [
+    createDemoGroupResourceGroup
+  ]
 }
 
 module applicationInsights 'modules/applicationInsights.bicep' = {  
@@ -105,6 +117,9 @@ module applicationInsights 'modules/applicationInsights.bicep' = {
     logAnalyticsWorkspaceName: 'ws-${name}-${uniqueSuffix}'
     tags: tags
   }
+  dependsOn: [
+    createDemoGroupResourceGroup
+  ]
 }
 
 module azuremlWorkspace 'modules/machineLearning.bicep' = {
@@ -133,6 +148,9 @@ module azuremlWorkspace 'modules/machineLearning.bicep' = {
     amlComputePublicIp: amlComputePublicIp
     vmSizeParam: amlComputeDefaultVmSize
   }
+  dependsOn: [
+    createDemoGroupResourceGroup
+  ]
 }
 
 module azuremlWorkspaceTwo 'modules/machineLearning.bicep' = {
@@ -162,6 +180,9 @@ module azuremlWorkspaceTwo 'modules/machineLearning.bicep' = {
     amlComputePublicIp: amlComputePublicIp
     vmSizeParam: amlComputeDefaultVmSize
   }
+  dependsOn: [
+    createDemoResourceGroup
+  ]
 }
 
 module machineLearningRegistry 'modules/machineLearningRegistry.bicep' = {
