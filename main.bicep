@@ -38,12 +38,19 @@ var name = toLower('${prefix}')
 // Create a short, unique suffix, that will be unique to each resource group
 var uniqueSuffix = substring(uniqueString(resourceGroup().id), 2, 6)
 
+module createUserAssignedIdentity 'modules/createUserAssignedIdentity.bicep' = {
+  name: 'createUserAssignedIdentity-${name}-${uniqueSuffix}-deployment'
+  params: {
+    location: location
+    resourceName: 'uai_${name}_${uniqueSuffix}'
+  }
+}
 // Dependent resources for the Azure Machine Learning workspace
 module keyvault 'modules/keyVault.bicep' = {
   name: 'kvd-${name}-${uniqueSuffix}-deployment'
   params: {
     location: location
-    keyvaultName: 'kvd-${name}-${uniqueSuffix}-06'
+    keyvaultName: 'kvd-${name}-${uniqueSuffix}-07'
     tags: tags
   }
 }
@@ -83,6 +90,7 @@ module azuremlWorkspace 'modules/machineLearning.bicep' = {
   params: {
     // workspace organization
     machineLearningName: 'mlw-${name}-${uniqueSuffix}'
+    userAssignedManagedIdentityId: createUserAssignedIdentity.outputs.userAssignedManagedIdentityId
     machineLearningFriendlyName: 'Private link endpoint sample workspace'
     machineLearningDescription: 'This is an example workspace having a private link endpoint.'
     location: location
@@ -110,6 +118,7 @@ module azuremlWorkspaceTwo 'modules/machineLearning.bicep' = {
   params: {
     // workspace organization
     machineLearningName: 'mlw-${name}-${uniqueSuffix}-two'
+    userAssignedManagedIdentityId: createUserAssignedIdentity.outputs.userAssignedManagedIdentityId
     machineLearningFriendlyName: 'Private link endpoint sample workspace'
     machineLearningDescription: 'This is an example workspace having a private link endpoint.'
     location: location
@@ -142,11 +151,11 @@ module machineLearningRegistry 'modules/machineLearningRegistry.bicep' = {
   }
 }
 
-module roleAssignments 'modules/roleAssignments.bicep' = {
-  name: '${azuremlWorkspaceTwo.name}RoleML'
-  scope: resourceGroup('demoGroup')
-  params: {
-    principalID: azuremlWorkspaceTwo.outputs.machineLearningId
-    roleDefinitionID: ['b78c5d69-af96-48a3-bf8d-a8b4d589de94']
-  }
-}
+// module roleAssignments 'modules/roleAssignments.bicep' = {
+//   name: '${azuremlWorkspaceTwo.name}RoleML'
+//   scope: resourceGroup('demoGroup')
+//   params: {
+//     principalID: azuremlWorkspaceTwo.outputs.machineLearningId
+//     roleDefinitionID: ['b78c5d69-af96-48a3-bf8d-a8b4d589de94']
+//   }
+// }

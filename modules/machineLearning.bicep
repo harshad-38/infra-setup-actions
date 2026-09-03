@@ -48,12 +48,18 @@ param amlComputePublicIp bool = true
 @description('VM size for the default compute cluster')
 param vmSizeParam string
 
+@description('User Assigned Managed Identity ID for the Azure Machine Learning workspace')
+param userAssignedManagedIdentityId string
+
 resource machineLearning 'Microsoft.MachineLearningServices/workspaces@2022-05-01' = {
   name: machineLearningName
   location: location
   tags: tags
   identity: {
-    type: 'SystemAssigned'
+    type: 'UserAssigned'
+    userAssignedIdentities: {
+      '${userAssignedManagedIdentityId}': {}
+    }
   }
   properties: {
     // workspace organization
@@ -102,6 +108,15 @@ resource dataStore 'Microsoft.MachineLearningServices/workspaces/dataStores@2024
     description: ''
     endpoint: environmentObject.suffixes.storage
     serviceDataAccessAuthIdentity: 'WorkspaceSystemAssignedIdentity'
+  }
+}
+
+module roleAssignments 'roleAssignments.bicep' = {
+  name: '${machineLearning.name}RoleML'
+  scope: resourceGroup('demoGroup')
+  params: {
+    principalID: machineLearning.identity.principalId
+    roleDefinitionID: ['b78c5d69-af96-48a3-bf8d-a8b4d589de94']
   }
 }
 
