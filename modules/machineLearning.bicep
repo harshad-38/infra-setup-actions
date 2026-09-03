@@ -75,7 +75,7 @@ resource machineLearning 'Microsoft.MachineLearningServices/workspaces@2022-05-0
     // configuration for workspaces with private link endpoint
     imageBuildCompute: 'cluster001'
     publicNetworkAccess: 'Enabled'
-    // primaryUserAssignedIdentity: userAssignedManagedIdentityId
+    primaryUserAssignedIdentity: userAssignedManagedIdentityId
   }
 }
 
@@ -108,7 +108,7 @@ resource dataStore 'Microsoft.MachineLearningServices/workspaces/dataStores@2024
     datastoreType: 'AzureBlob'
     description: ''
     endpoint: environmentObject.suffixes.storage
-    serviceDataAccessAuthIdentity: 'WorkspaceSystemAssignedIdentity'
+    serviceDataAccessAuthIdentity: 'WorkspaceUserAssignedIdentity'
   }
 }
 
