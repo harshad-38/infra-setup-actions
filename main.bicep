@@ -51,7 +51,7 @@ module createDemoResourceGroup 'modules/resourceGroup.bicep' = {
   name: 'CreateDemoResourceGroup-deployment'
   scope: subscription()
   params: {
-    resourceGroupName: 'demoGroup'
+    resourceGroupName: 'demo'
     resourceGroupLocation: location
   } 
 }
