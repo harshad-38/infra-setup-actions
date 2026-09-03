@@ -4,6 +4,8 @@ param location string
 
 param storageAccountType string
 
+param userAssignedManagedIdentityId string
+
 param tags object
 
 var acrName = 'acr-${registryName}-${substring(uniqueString(resourceGroup().id), 2, 6)}'
@@ -15,7 +17,10 @@ resource mlRegistry 'Microsoft.MachineLearningServices/registries@2023-04-01' = 
   location: location
   tags: tags
   identity: {
-    type: 'SystemAssigned'
+    type: 'SystemAssigned,UserAssigned'
+    userAssignedIdentities: {
+      '${userAssignedManagedIdentityId}': {}
+    }
   }
   properties: {
     regionDetails: [

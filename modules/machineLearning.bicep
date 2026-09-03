@@ -56,7 +56,7 @@ resource machineLearning 'Microsoft.MachineLearningServices/workspaces@2022-05-0
   location: location
   tags: tags
   identity: {
-    type: 'UserAssigned'
+    type: 'SystemAssigned, UserAssigned'
     userAssignedIdentities: {
       '${userAssignedManagedIdentityId}': {}
     }
@@ -108,6 +108,8 @@ resource dataStore 'Microsoft.MachineLearningServices/workspaces/dataStores@2024
     datastoreType: 'AzureBlob'
     description: ''
     endpoint: environmentObject.suffixes.storage
-    serviceDataAccessAuthIdentity: 'WorkspaceUserAssignedIdentity'
+    serviceDataAccessAuthIdentity: 'WorkspaceSystemAssignedIdentity'
   }
 }
+
+output machineLearningId string = machineLearning.identity.principalId
