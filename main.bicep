@@ -50,7 +50,7 @@ module keyvault 'modules/keyVault.bicep' = {
   name: 'kvd-${name}-${uniqueSuffix}-deployment'
   params: {
     location: location
-    keyvaultName: 'kvd-${name}-${uniqueSuffix}-09'
+    keyvaultName: 'kvd-${name}-${uniqueSuffix}-10'
     tags: tags
   }
 }

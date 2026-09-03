@@ -111,4 +111,3 @@ resource dataStore 'Microsoft.MachineLearningServices/workspaces/dataStores@2024
     serviceDataAccessAuthIdentity: 'WorkspaceUserAssignedIdentity'
   }
 }
-
