@@ -66,6 +66,7 @@ module createUserAssignedIdentity 'modules/createUserAssignedIdentity.bicep' = {
 // Dependent resources for the Azure Machine Learning workspace
 module keyvault 'modules/keyVault.bicep' = {
   name: 'kvd-${name}-${uniqueSuffix}-deployment'
+  scope: resourceGroup('demoGroup')
   params: {
     location: location
     keyvaultName: 'kvd-${name}-${uniqueSuffix}-13'
@@ -75,6 +76,7 @@ module keyvault 'modules/keyVault.bicep' = {
 
 module storage 'modules/storage.bicep' = {
   name: 'st${name}${uniqueSuffix}-deployment'
+  scope: resourceGroup('demoGroup')
   params: {
     location: location
     storageName: 'st${name}${uniqueSuffix}'
@@ -85,6 +87,7 @@ module storage 'modules/storage.bicep' = {
 
 module containerRegistry 'modules/containerRegistry.bicep' = {
   name: 'cr${name}${uniqueSuffix}-deployment'
+  scope: resourceGroup('demoGroup')
   params: {
     location: location
     containerRegistryName: 'cr${name}${uniqueSuffix}'
@@ -94,6 +97,7 @@ module containerRegistry 'modules/containerRegistry.bicep' = {
 
 module applicationInsights 'modules/applicationInsights.bicep' = {  
   name: 'appi-${name}-${uniqueSuffix}-deployment'
+  scope: resourceGroup('demoGroup')
   params: {
     location: location
     applicationInsightsName: 'appi-${name}-${uniqueSuffix}'
@@ -161,6 +165,7 @@ module azuremlWorkspaceTwo 'modules/machineLearning.bicep' = {
 
 module machineLearningRegistry 'modules/machineLearningRegistry.bicep' = {
   name: 'mlr-${name}-${uniqueSuffix}-deployment'
+  scope: resourceGroup('demoGroup')
   params: {
     location: location
     userAssignedManagedIdentityId: createUserAssignedIdentity.outputs.userAssignedManagedIdentityId

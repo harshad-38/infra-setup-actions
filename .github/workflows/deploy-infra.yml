@@ -38,8 +38,8 @@ jobs:
         uses: azure/cli@v2
         with:
           inlineScript:
-            az deployment group what-if \
-              --resource-group "demoGroup" \
+            az deployment sub create \
+              --location "centralindia" \
               --parameters ./config.bicepparam
 
   # JOB 2: Runs ONLY when code is merged/pushed to main
@@ -59,7 +59,7 @@ jobs:
         uses: azure/cli@v2
         with:
           inlineScript: |
-            az deployment group create \
+            az deployment sub create \
               --name "mlops-infra-deployment" \
-              --resource-group "demoGroup" \
+              --location "centralindia" \
               --parameters ./config.bicepparam
