@@ -7,3 +7,5 @@ resource machineLerninguserAssignedManagedIdentity 'Microsoft.ManagedIdentity/us
   name: resourceName
   location: location
 }
+
+output userAssignedManagedIdentityId string = machineLerninguserAssignedManagedIdentity.id
