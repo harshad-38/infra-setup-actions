@@ -108,16 +108,7 @@ resource dataStore 'Microsoft.MachineLearningServices/workspaces/dataStores@2024
     datastoreType: 'AzureBlob'
     description: ''
     endpoint: environmentObject.suffixes.storage
-    serviceDataAccessAuthIdentity: 'WorkspaceSystemAssignedIdentity'
-  }
-}
-
-module roleAssignments 'roleAssignments.bicep' = {
-  name: '${machineLearning.name}RoleML'
-  scope: resourceGroup('demoGroup')
-  params: {
-    principalID: machineLearning.identity.principalId
-    roleDefinitionID: ['b78c5d69-af96-48a3-bf8d-a8b4d589de94']
+    serviceDataAccessAuthIdentity: 'WorkspaceUserAssignedIdentity'
   }
 }
 
