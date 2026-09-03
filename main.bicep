@@ -7,7 +7,7 @@
 param prefix string
 
 @description('Azure region used for the deployment of all resources.')
-param location string = resourceGroup().location
+param location string
 
 @description('Set of tags to apply to all resources.')
 param tags object
@@ -37,6 +37,24 @@ var name = toLower('${prefix}')
 
 // Create a short, unique suffix, that will be unique to each resource group
 var uniqueSuffix = substring(uniqueString(resourceGroup().id), 2, 6)
+
+module createDemoGroupResourceGroup 'modules/resourceGroup.bicep' = {
+  name: 'CreateDemoGroupResourceGroup-deployment'
+  scope: subscription()
+  params: {
+    resourceGroupName: 'demoGroup'
+    resourceGroupLocation: location
+  } 
+}
+
+module createDemoResourceGroup 'modules/resourceGroup.bicep' = {
+  name: 'CreateDemoResourceGroup-deployment'
+  scope: subscription()
+  params: {
+    resourceGroupName: 'demoGroup'
+    resourceGroupLocation: location
+  } 
+}
 
 module createUserAssignedIdentity 'modules/createUserAssignedIdentity.bicep' = {
   name: 'createUserAssignedIdentity-${name}-${uniqueSuffix}-deployment'
