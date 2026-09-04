@@ -57,14 +57,15 @@ resource machineLearningComputeInstance001 'Microsoft.MachineLearningServices/wo
     type: 'SystemAssigned'
   }
   properties: {
+    idleTimeBeforeShutdown: 'PT120S'
     computeType: 'ComputeInstance'
     computeLocation: location
     description: 'Machine Learning compute instance 002'
     disableLocalAuth: true
     properties: {
-      applicationSharingPolicy: 'Personal'
+      applicationSharingPolicy: 'Shared'
       
-      computeInstanceAuthorizationType: 'personal'
+      computeInstanceAuthorizationType: 'default'
       
       sshSettings: {
         sshPublicAccess: 'Disabled'
