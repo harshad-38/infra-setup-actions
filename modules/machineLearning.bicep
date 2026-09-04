@@ -51,6 +51,9 @@ param vmSizeParam string
 @description('User Assigned Managed Identity ID for the Azure Machine Learning workspace')
 param userAssignedManagedIdentityId string
 
+@description('User that will access the compute instance form local environment')
+param userObjectId string
+
 resource machineLearning 'Microsoft.MachineLearningServices/workspaces@2022-05-01' = {
   name: machineLearningName
   location: location
@@ -83,6 +86,7 @@ module machineLearningCompute 'machinelearningCompute.bicep' = {
   name: '${machineLearningName}Compute'
   scope: resourceGroup()
   params: {
+    userObjectId: userObjectId
     machineLearning: machineLearningName
     location: location
     prefix: prefix

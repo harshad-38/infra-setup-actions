@@ -35,6 +35,9 @@ param amlComputePublicIp bool
 @description('VM size for the default compute cluster')
 param amlComputeDefaultVmSize string
 
+@description('User that will access the compute instance form local environment')
+param userObjectId string
+
 // Variables
 var name = toLower('${prefix}')
 
@@ -138,6 +141,7 @@ module azuremlWorkspace 'modules/machineLearning.bicep' = {
     prefix: name
     tags: tags
     num: 1
+    userObjectId: userObjectId
     // dependent resources
     applicationInsightsId: applicationInsights.outputs.applicationInsightsId
     containerRegistryId: containerRegistry.outputs.containerRegistryId
@@ -161,6 +165,7 @@ module azuremlWorkspaceTwo 'modules/machineLearning.bicep' = {
   scope: resourceGroup('demo')
   params: {
     // workspace organization
+    userObjectId: userObjectId
     machineLearningName: 'mlw-${name}-${uniqueSuffix}-two'
     userAssignedManagedIdentityId: createUserAssignedIdentity.outputs.userAssignedManagedIdentityId
     machineLearningFriendlyName: 'Private link endpoint sample workspace'

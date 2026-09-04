@@ -21,6 +21,9 @@ param amlComputePublicIp bool
 @description('VM size for the default compute cluster')
 param vmSizeParam string
 
+@description('User that will access the compute instance form local environment')
+param userObjectId string
+
 resource machineLearningCluster001 'Microsoft.MachineLearningServices/workspaces/computes@2022-05-01' = {
   name: '${machineLearning}/cluster${num}'
   location: location
@@ -65,7 +68,14 @@ resource machineLearningComputeInstance001 'Microsoft.MachineLearningServices/wo
     properties: {
       applicationSharingPolicy: 'Shared'
       
-      computeInstanceAuthorizationType: 'default'
+      computeInstanceAuthorizationType: 'personal'
+
+      personalComputeInstanceSettings: {
+        assignedUser: {
+          objectId: userObjectId
+          tenantId: subscription().tenantId
+        }
+      }
       
       sshSettings: {
         sshPublicAccess: 'Disabled'
