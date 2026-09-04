@@ -76,7 +76,7 @@ module keyvault 'modules/keyVault.bicep' = {
   scope: resourceGroup('demoGroup')
   params: {
     location: location
-    keyvaultName: 'kvd-${name}-${uniqueSuffix}-13'
+    keyvaultName: 'kvd-${name}-${uniqueSuffix}-14'
     tags: tags
   }
   dependsOn: [
@@ -200,11 +200,11 @@ module machineLearningRegistry 'modules/machineLearningRegistry.bicep' = {
   }
 }
 
-module roleAssignments 'modules/roleAssignments.bicep' = {
-  name: '${azuremlWorkspaceTwo.name}RoleML'
-  scope: resourceGroup('demoGroup')
-  params: {
-    principalID: azuremlWorkspaceTwo.outputs.machineLearningId
-    roleDefinitionID: ['b78c5d69-af96-48a3-bf8d-a8b4d589de94']
-  }
-}
+// module roleAssignments 'modules/roleAssignments.bicep' = {
+//   name: '${azuremlWorkspaceTwo.name}RoleML'
+//   scope: resourceGroup('demoGroup')
+//   params: {
+//     principalID: azuremlWorkspaceTwo.outputs.machineLearningId
+//     roleDefinitionID: ['b78c5d69-af96-48a3-bf8d-a8b4d589de94']
+//   }
+// }
