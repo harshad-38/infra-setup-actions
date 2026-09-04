@@ -1,6 +1,9 @@
+// Running a fresh workflow
+
 // Execute this main file to configure Azure Machine Learning end-to-end in a moderately secure set up
 targetScope = 'subscription'
 // Parameters
+
 @minLength(2)
 @maxLength(10)
 @description('Prefix for all resource names.')
