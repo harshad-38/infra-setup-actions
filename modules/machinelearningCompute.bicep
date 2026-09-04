@@ -64,7 +64,7 @@ resource machineLearningComputeInstance001 'Microsoft.MachineLearningServices/wo
     computeType: 'ComputeInstance'
     computeLocation: location
     description: 'Machine Learning compute instance 002'
-    disableLocalAuth: true
+    disableLocalAuth: false
     properties: {
       applicationSharingPolicy: 'Shared'
       
