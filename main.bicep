@@ -79,7 +79,7 @@ module keyvault 'modules/keyVault.bicep' = {
   scope: resourceGroup('demoGroup')
   params: {
     location: location
-    keyvaultName: 'kvd-${name}-${uniqueSuffix}-16'
+    keyvaultName: 'kvd-${name}-${uniqueSuffix}-17'
     tags: tags
   }
   dependsOn: [
@@ -203,6 +203,9 @@ module machineLearningRegistry 'modules/machineLearningRegistry.bicep' = {
     registryName: 'mlr-${name}-${uniqueSuffix}'
     storageAccountType: 'Standard_LRS'
   }
+  dependsOn: [
+    createDemoGroupResourceGroup
+  ]
 }
 
 // module roleAssignments 'modules/roleAssignments.bicep' = {
@@ -222,4 +225,7 @@ module roleAssignments 'modules/roleAssignments.bicep' = {
     roleDefinitionID: ['2a2b9908-6ea1-4ae2-8e65-a410df84e7d1']
     principalType: 'User'
   }
+  dependsOn: [
+    createDemoGroupResourceGroup
+  ]
 }
