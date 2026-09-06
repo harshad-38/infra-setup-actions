@@ -59,8 +59,8 @@ resource machineLearningComputeInstance001 'Microsoft.MachineLearningServices/wo
   identity: {
     type: 'SystemAssigned'
   }
+  
   properties: {
-    idleTimeBeforeShutdown: 'PT120S'
     computeType: 'ComputeInstance'
     computeLocation: location
     description: 'Machine Learning compute instance 002'
@@ -69,7 +69,6 @@ resource machineLearningComputeInstance001 'Microsoft.MachineLearningServices/wo
       applicationSharingPolicy: 'Shared'
       
       computeInstanceAuthorizationType: 'personal'
-
       personalComputeInstanceSettings: {
         assignedUser: {
           objectId: userObjectId
