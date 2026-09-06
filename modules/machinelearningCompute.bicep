@@ -90,7 +90,7 @@ module roleAssignmentsComputeCluster 'roleAssignments.bicep' = {
   scope: resourceGroup('demoGroup')
   params: {
     principalID: machineLearningCluster001.identity.principalId
-    roleDefinitionID: ['ba92f5b4-2d11-453d-a403-e96b0029c9fe','8311e382-0749-4cb8-b61a-304f252e45ec','4633458b-17de-408a-b874-0445c86b69e6']
+    roleDefinitionID: ['ba92f5b4-2d11-453d-a403-e96b0029c9fe','8311e382-0749-4cb8-b61a-304f252e45ec','4633458b-17de-408a-b874-0445c86b69e6','1823dd4f-9b8c-4ab6-ab4e-7397a3684615','f6c7c914-8db3-469d-8ca1-694a8f32e121']
   }
 }
 
@@ -99,7 +99,7 @@ module roleAssignmentsComputeInstance 'roleAssignments.bicep' = {
   scope: resourceGroup('demoGroup')
   params: {
     principalID: machineLearningComputeInstance001.identity.principalId
-    roleDefinitionID: ['ba92f5b4-2d11-453d-a403-e96b0029c9fe','8311e382-0749-4cb8-b61a-304f252e45ec','4633458b-17de-408a-b874-0445c86b69e6','1823dd4f-9b8c-4ab6-ab4e-7397a3684615']
+    roleDefinitionID: ['ba92f5b4-2d11-453d-a403-e96b0029c9fe','8311e382-0749-4cb8-b61a-304f252e45ec','4633458b-17de-408a-b874-0445c86b69e6','1823dd4f-9b8c-4ab6-ab4e-7397a3684615','f6c7c914-8db3-469d-8ca1-694a8f32e121']
   }
 }
 

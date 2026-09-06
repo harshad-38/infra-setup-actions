@@ -1,5 +1,5 @@
 @description('Azure region of the deployment')
-param location string = resourceGroup().id
+param location string
 
 @description('Tags to add to the resources')
 param tags object = {
