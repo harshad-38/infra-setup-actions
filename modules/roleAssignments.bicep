@@ -4,6 +4,10 @@ param principalID string
 @description('Role defintion ID which consists of priviledges to be granted to ML Workspace')
 param roleDefinitionID array
 
+@description('Pricipal type to which the role has  to be assigned')
+param principalType string = 'ServicePrincipal'
+
+
 @description('Array of unique names for the compute cluster role assignments')
 var roleAssignmentNames = [for roleId in roleDefinitionID: guid(principalID, roleId, resourceGroup().id)]
 
@@ -11,7 +15,7 @@ resource roleAssignment 'Microsoft.Authorization/roleAssignments@2022-04-01' = [
   name: roleAssignmentNames[index]
   properties:{
     principalId: principalID
-    principalType: 'ServicePrincipal'
+    principalType: principalType
     roleDefinitionId: resourceId('Microsoft.Authorization/roleDefinitions', roleId)
   }
 }]

@@ -213,3 +213,13 @@ module machineLearningRegistry 'modules/machineLearningRegistry.bicep' = {
 //     roleDefinitionID: ['b78c5d69-af96-48a3-bf8d-a8b4d589de94']
 //   }
 // }
+
+module roleAssignments 'modules/roleAssignments.bicep' = {
+  name: 'assignedToLishaDalve'
+  scope: resourceGroup('demoGroup')
+  params: {
+    principalID: userObjectId
+    roleDefinitionID: ['2a2b9908-6ea1-4ae2-8e65-a410df84e7d1']
+    principalType: 'User'
+  }
+}

@@ -13,7 +13,8 @@ module roleAssignments 'roleAssignments.bicep' = {
   scope: resourceGroup('demoGroup')
   params: {
     principalID: machineLerninguserAssignedManagedIdentity.properties.principalId
-    roleDefinitionID: ['b78c5d69-af96-48a3-bf8d-a8b4d589de94']
+    roleDefinitionID: ['b78c5d69-af96-48a3-bf8d-a8b4d589de94','0d7aedc0-15fd-4a67-a412-efad370c947e','2a2b9908-6ea1-4ae2-8e65-a410df84e7d1']
+    principalType: 'ServicePrincipal'
   }
 }
 
