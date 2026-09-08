@@ -29,7 +29,7 @@ resource containerRegistry 'Microsoft.ContainerRegistry/registries@2021-09-01' =
     }
     // networkRuleBypassOptions: 'AzureServices'
     // networkRuleSet: {
-    //   defaultAction: 'Deny'
+    //   defaultAction: 'Allow'
     // }
     policies: {
       exportPolicy:{

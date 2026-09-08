@@ -79,7 +79,7 @@ module keyvault 'modules/keyVault.bicep' = {
   scope: resourceGroup('demoGroup')
   params: {
     location: location
-    keyvaultName: 'kvd-${name}-${uniqueSuffix}-19'
+    keyvaultName: 'kvd-${name}-${uniqueSuffix}-20'
     tags: tags
   }
   dependsOn: [
