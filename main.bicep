@@ -79,7 +79,7 @@ module keyvault 'modules/keyVault.bicep' = {
   scope: resourceGroup('demoGroup')
   params: {
     location: location
-    keyvaultName: 'kvd-${name}-${uniqueSuffix}-20'
+    keyvaultName: 'kvd-${name}-${uniqueSuffix}-21'
     tags: tags
   }
   dependsOn: [
@@ -222,7 +222,7 @@ module roleAssignments 'modules/roleAssignments.bicep' = {
   scope: resourceGroup('demoGroup')
   params: {
     principalID: userObjectId
-    roleDefinitionID: ['2a2b9908-6ea1-4ae2-8e65-a410df84e7d1']
+    roleDefinitionID: ['2a2b9908-6ea1-4ae2-8e65-a410df84e7d1','f6c7c914-8db3-469d-8ca1-694a8f32e121']
     principalType: 'User'
   }
   dependsOn: [
